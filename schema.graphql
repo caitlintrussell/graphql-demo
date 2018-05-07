@@ -1,0 +1,32 @@
+
+### everytime we query 'Dog', we will use this type ###
+type Dog @model {
+  # Anything followed in an ! is required in graphQL.
+  id: ID! @isUnique
+  name: String!
+  breed: String!
+}
+
+### here are all of root our queries ###
+type Query {
+# this query will give us an array of all dogs
+  allDogs: [Dog]
+# notice that these queries look more like functions, we will call them with passed in strings #
+  dogByBreed(breed: String!): [Dog]
+  dogByName(name: String!):  Dog
+}
+
+### this will be our input type for anytime we are making a dog ###
+input addDogInput {
+  name: String
+  breed: String
+}
+input removeDogInput {
+  name: String
+}
+
+type Mutation {
+  # is referencing our input types from above
+  addDog(input: addDogInput): Dog
+  removeDog(input: removeDogInput): Dog
+}

@@ -20,5 +20,5 @@ const Dog = db.define('dogs', {
 
 module.exports = {
   db,
-  Dog
+  models: { Dog }
 }
