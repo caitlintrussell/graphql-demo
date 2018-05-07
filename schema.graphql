@@ -9,7 +9,7 @@ type Dog @model {
 
 ### here are all of root our queries ###
 type Query {
-# this query will give us an array of all dogs
+# this query will give us an array of all dogs #
   allDogs: [Dog]
 # notice that these queries look more like functions, we will call them with passed in strings #
   dogByBreed(breed: String!): [Dog]
@@ -18,15 +18,15 @@ type Query {
 
 ### this will be our input type for anytime we are making a dog ###
 input addDogInput {
-  name: String
-  breed: String
+  name: String!
+  breed: String!
 }
 input removeDogInput {
-  name: String
+  name: String!
 }
 
 type Mutation {
   # is referencing our input types from above
-  addDog(input: addDogInput): Dog
-  removeDog(input: removeDogInput): Dog
+  addDog(input: addDogInput!): Dog
+  removeDog(input: removeDogInput!): Dog
 }
